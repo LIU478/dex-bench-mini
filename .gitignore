@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+# IDE
+.vscode/
+.idea/
+*.swp
+# Data files (too large for git)\
+data/*.hdf5
+data/*.parquet
+data/*.mp4
+outputs/checkpoints/
+outputs/videos/
+*.pt
+*.ckpt
+# Isaac Sim caches
+omni_cache/
+*.usd.bak
+# Logs
+logs/
+wandb/
+runs/
+*.log
