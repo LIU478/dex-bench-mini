@@ -1,4 +1,4 @@
-# Day 5: Isaac Lab 环境搭建完成 + Cartpole 训练验证
+# Day 1: Isaac Lab 环境搭建完成 + Cartpole 训练验证
 
 ## 完成的事
 - AutoDL 实例开通(RTX 4090D 24GB,Miniconda + CUDA 11.8)
