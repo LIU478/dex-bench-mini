@@ -1,8 +1,7 @@
 # Experiment 02: Allegro Hand Cube Reorientation
 
 ## Task
-
-使用 Allegro Hand（16-DoF，4 指机械手）完成 cube reorientation 任务：
+使用 Allegro Hand（16-DoF 四指手）完成 cube reorientation 任务：
 将立方体从随机初始姿态重定向到目标姿态。
 
 ## Setup
@@ -30,8 +29,6 @@
 
 ## Training Results
 
-![训练曲线](allegro_training_curves.png)
-
 | 指标 | 数值 |
 |------|------|
 | 最终 Mean Reward | **12.31** |
@@ -44,43 +41,21 @@
 
 **2000 iter 对于 Allegro Hand 任务属于早期训练阶段**：
 
-- Cartpole 在 ~100 iter 收敛（2-DoF 简单任务）
-- Allegro Repose 需要 5000~20000 iter 才能稳定收敛
-  （16-DoF，contact-rich，物理接触复杂）
+| 任务 | 收敛所需 iter | 难度 |
+|------|-------------|------|
+| Cartpole（2-DoF）| ~100 | 低 |
+| Allegro Repose（16-DoF）| 5000~20000 | 高 |
 
-**已观察到的学习信号**：
-- `track_orientation_inv_l2 = 0.7969`（正值，说明 policy 在跟踪目标姿态）
-- Mean Reward 从初始接近 0 上升到 12.31
-- 未出现训练崩溃
-
-**收敛瓶颈分析**：
-- `object_out_of_reach = 0.2083` → 20% episode 物体滑落，抓握还不稳定
-- `orientation_error = 1.4072 rad` → 姿态误差约 80°，还需要更多训练
-- 如果继续训练到 5000+ iter，预计成功率会显著提升
-
-## Comparison with Cartpole
-
-| 维度 | Cartpole（Exp01）| Allegro Repose（Exp02）|
-|------|------------------|------------------------|
-| DoF | 2 | 16 |
-| 任务类型 | 简单平衡 | contact-rich 操作 |
-| 收敛 iter | ~100 | 5000+（预计）|
-| 2000 iter 状态 | 完全收敛 | 早期学习 |
-| 计算速度 | ~3000 steps/s | ~25000 steps/s（更多 envs）|
-| 工程挑战 | 低 | 高（物理接触、抓握稳定性）|
-
-## Key Takeaway
-
-灵巧手任务的 RL 训练需要显著更多的 iteration，
-contact-rich 任务的 reward 设计和物理参数调优
-是决定训练成败的关键因素。
+已观察到明确的学习信号：
+- track_orientation_inv_l2 为正值，policy 在学习追踪目标姿态
+- Mean Reward 从接近 0 上升到 12.31
+- 训练过程无崩溃
 
 ## Checkpoint
 
-训练完成的模型存放在 `checkpoint/model_2000.pt`
+训练好的 policy 存放在 `checkpoint/model_1999.pt`
 
-## Files
+## Key Takeaway
 
-- `allegro_training_curves.png`：训练曲线
-- `checkpoint/model_2000.pt`：训练好的 policy
-- `README.md`：本文档
+contact-rich 灵巧手任务需要比简单平衡任务多一个数量级的训练量，
+reward 设计的好坏直接决定能否收敛。

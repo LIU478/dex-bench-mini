@@ -1,31 +1,23 @@
-# Python
+# 虚拟环境
+dex-env/
+
+# Isaac Lab 源码（太大，不需要上传）
+IsaacLab/
+
+# Python 缓存
 __pycache__/
 *.pyc
 *.pyo
-*.egg-info/
 .pytest_cache/
 
-# Virtual environments
-venv/
-env/
-.venv/
-# IDE
-.vscode/
-.idea/
-*.swp
-# Data files (too large for git)\
-data/*.hdf5
-data/*.parquet
-data/*.mp4
-outputs/checkpoints/
-outputs/videos/
-*.pt
-*.ckpt
-# Isaac Sim caches
-omni_cache/
-*.usd.bak
-# Logs
+# 训练 log（太大）
 logs/
-wandb/
-runs/
-*.log
+outputs/
+
+# 临时文件
+*.tmp
+*.bak
+.DS_Store
+
+# 脚本目录（如果是临时脚本）
+scripts/
