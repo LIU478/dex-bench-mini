@@ -8,7 +8,7 @@ print("Successful")
 print("observation_space:", env.observation_space)
 print("action_space:", env.action_space)
 
-for step in range(500):
+for step in range(1000):
     action = env.action_space.sample()
     obs, reward, terminated, truncated, info = env.step(action)
     if terminated or truncated:

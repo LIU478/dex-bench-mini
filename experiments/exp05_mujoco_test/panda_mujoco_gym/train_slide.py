@@ -1,5 +1,5 @@
 '''
-Push:50万步--生成final_model
+Slide:50w步--生成Slide_50_model
 '''
 import panda_mujoco_gym  # 导入你的环境
 import gymnasium as gym  
@@ -11,7 +11,7 @@ from stable_baselines3.common.monitor import Monitor
 import os
 
 # ========== 配置部分 ==========
-ENV_ID = "FrankaPushSparse-v0"  # 任务: 可选择 Push, Slide, PickAndPlace
+ENV_ID = "FrankaSlideSparse-v0"  # 任务: 可选择 Push, Slide, PickAndPlace
 TOTAL_TIMESTEPS = 500_000        # 总训练步数: Push任务论文推荐50万步
 LOG_DIR = "./logs/"              # 日志保存路径
 SAVE_DIR = "./models/"           # 模型保存路径
@@ -44,5 +44,5 @@ print(f"开始训练 {ENV_ID} 任务，共 {TOTAL_TIMESTEPS} 步...")
 model.learn(total_timesteps=TOTAL_TIMESTEPS)
 
 # 训练完成后，保存最终的模型
-model.save(f"{SAVE_DIR}/final_model")
+model.save(f"{SAVE_DIR}/Slide_50_model")
 print(f"训练完成！模型已保存至 {SAVE_DIR}/final_model.zip")
