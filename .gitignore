@@ -21,3 +21,4 @@ outputs/
 
 # 脚本目录（如果是临时脚本）
 scripts/
+*.pth
