@@ -10,14 +10,27 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
-# 训练 log（太大）
+# 大型训练文件（checkpoints, 日志）
+*.pth
 logs/
-outputs/
+*.log
+
+# 大型数据文件（演示数据集）
+*.hdf5
+
+# 输出目录中的大文件（但允许 PNG/图片和 README）
+outputs/*
+!outputs/*.png
+!outputs/*.md
+experiments/*/outputs/*
+!experiments/*/outputs/*.png
+!experiments/*/outputs/*.md
+
+# 脚本仓库中的文件（我们的脚本已强制添加）
+# 允许 .py 脚本
+scripts/*.py
 
 # 临时文件
 *.tmp
 *.bak
 .DS_Store
-
-# 脚本目录（如果是临时脚本）
-scripts/
